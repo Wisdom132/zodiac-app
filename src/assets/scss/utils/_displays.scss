@@ -1,0 +1,31 @@
+.d-block {
+   display: block;
+}
+.d-none {
+   display: none;
+}
+
+// Display grid
+.d-grid {
+   display: grid;
+}
+.g-gap-1 {
+   grid-gap: 0.2rem;
+}
+
+// Display Flex
+.d-flex {
+   display: flex;
+}
+.flex-wrap {
+   flex-wrap: wrap;
+}
+.flex-nowrap {
+   flex-wrap: nowrap;
+}
+.fd-col {
+   flex-direction: column;
+}
+.fd-row {
+   flex-direction: row;
+}
