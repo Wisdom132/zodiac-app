@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import bus from "@/bus"
+import 
+bus from "@/bus"
 export default {
   name: "tab-text",
   methods:{

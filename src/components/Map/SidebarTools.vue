@@ -24,7 +24,7 @@ export default {
 			{ component: "tab-style", text: "Style", icon: "fal fa-paint-brush", active: false, iconFont: "fa" },
 			{ component: "tab-layout", text: "Layout", icon: "mdi-layers-outline", active: false, iconFont: "mdi" },
 			{ component: "tab-text", text: "Text", icon: "mdi-format-text", active: false, iconFont: "mdi" },
-			{ component: "tab-print", text: "Print", icon: "mdi-download", active: false, iconFont: "mdi" }
+			{ component: "tab-zodiac", text: "Zodiac", icon: "mdi-weather-windy", active: false, iconFont: "mdi" },
 		]
 	}),
 	methods: {

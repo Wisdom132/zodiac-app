@@ -16,6 +16,7 @@ import TabStyle from "./TabStyle"
 import TabLayout from "./TabLayout"
 import TabText from "./TabText"
 import TabPrint from "./TabPrint"
+import TabZodiac from './TabZodiac'
 
 // Exports
 export default {
@@ -28,6 +29,7 @@ export default {
 		'tab-layout': TabLayout,
 		'tab-text': TabText,
 		'tab-print': TabPrint,
+		'tab-zodiac': TabZodiac
 	},
 	data: () => ({
 		activeComponent: "tab-search"
@@ -36,7 +38,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 	.tabs {
-		width: 14rem;
+		width: 25rem;
 		.overline {
 			font-size: 0.8em !important;
 		}
