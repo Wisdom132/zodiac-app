@@ -10,10 +10,10 @@
     </v-card>
 
     <div class="map-sidebar elevation-3 d-flex h-100">
-      <div class="tabs brl br-grey-4 pa-5">
+      <div class="tabs brl br-grey-4 pt-10">
         <div>
-          <label class="overline">Customize your design</label>
-          <v-container fluid="true">
+          <label class="overline pa-2">Customize your design</label>
+          <v-container ma-0 pa-0>
             <v-row>
               <v-col>
                 <v-expansion-panels>
