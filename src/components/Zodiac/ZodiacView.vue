@@ -14,7 +14,15 @@
           <v-container>
             <v-row>
               <v-col>
-                <v-select :items="items" label="Change Size" solo></v-select>
+                <v-select
+                  @change="changeDimentions"
+                  item-text="display_name"
+                  item-value="value"
+                  v-model="model"
+                  :items="items"
+                  label="Change Size"
+                  solo
+                ></v-select>
               </v-col>
             </v-row>
           </v-container>
@@ -33,11 +41,22 @@ import sidebar from "./sidebar";
 export default {
   data() {
     return {
-      active: true,
-      height: 300,
+      model: "",
+      height: 400,
       width: 300,
-      items: ["Foo", "Bar", "Fizz", "Buzz"]
+      items: [
+        { display_name: "30x40cm", value: [300, 400] },
+        { display_name: "50x70cm", value: [500, 700] },
+        { display_name: "70x100cm", value: [700, 1000] }
+      ]
     };
+  },
+  methods: {
+    changeDimentions(payload) {
+      this.height = this.model[1];
+      this.width = this.model[0];
+      console.log(this.model);
+    }
   },
   components: {
     sidebar

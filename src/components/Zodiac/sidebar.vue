@@ -7,6 +7,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      active: true
+    };
+  },
   name: "tab-zodiac"
 };
 </script>
