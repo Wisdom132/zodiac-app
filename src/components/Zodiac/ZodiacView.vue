@@ -1,9 +1,11 @@
 <template>
   <section class="d-flex">
     <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
-      <v-card-text>
-        <div>Word of the Day</div>
-        <p class="display-1 text--primary">be•nev•o•lent</p>
+      <v-card-text class="text-center">
+        <p class="display-1 text--primary text-uppercase">{{cardData.header}}</p>
+        <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.divider}}</v-list-item-title>
+        <v-list-item-subtitle class="text-uppercase">{{cardData.tagline}}</v-list-item-subtitle>
+        <v-list-item-subtitle class="text-uppercase">{{cardData.subline}}</v-list-item-subtitle>
       </v-card-text>
     </v-card>
 
@@ -11,18 +13,54 @@
       <div class="tabs brl br-grey-4 pa-5">
         <div>
           <label class="overline">Customize your design</label>
-          <v-container>
+          <v-container fluid="true">
             <v-row>
               <v-col>
-                <v-select
-                  @change="changeDimentions"
-                  item-text="display_name"
-                  item-value="value"
-                  v-model="model"
-                  :items="items"
-                  label="Change Size"
-                  solo
-                ></v-select>
+                <v-expansion-panels>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>Customize style</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <v-select
+                        @change="changeDimentions"
+                        item-text="display_name"
+                        item-value="value"
+                        v-model="model"
+                        :items="items"
+                        label="Change Size"
+                        solo
+                      ></v-select>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>Customize Text</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <v-text-field
+                        label="Header"
+                        v-model="cardData.header"
+                        placeholder="Placeholder"
+                        outlined
+                      ></v-text-field>
+                      <v-text-field
+                        label="Divider"
+                        v-model="cardData.divider"
+                        placeholder="Placeholder"
+                        outlined
+                      ></v-text-field>
+                      <v-text-field
+                        label="Tagline"
+                        v-model="cardData.tagline"
+                        placeholder="Placeholder"
+                        outlined
+                      ></v-text-field>
+                      <v-text-field
+                        label="Subline"
+                        v-model="cardData.subline"
+                        placeholder="Placeholder"
+                        outlined
+                      ></v-text-field>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
               </v-col>
             </v-row>
           </v-container>
@@ -41,6 +79,12 @@ import sidebar from "./sidebar";
 export default {
   data() {
     return {
+      cardData: {
+        header: "AQUARIUS",
+        divider: "AIR",
+        tagline: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
+        subline: "JAN 20 - FEB 18"
+      },
       model: "",
       height: 400,
       width: 300,
