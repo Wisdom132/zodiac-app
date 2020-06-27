@@ -35,7 +35,7 @@
                     <v-expansion-panel-header>Customize Text</v-expansion-panel-header>
                     <v-expansion-panel-content>
                       <v-text-field
-                        label="Header"
+                        label="Header Line"
                         v-model="cardData.header"
                         placeholder="Placeholder"
                         outlined
