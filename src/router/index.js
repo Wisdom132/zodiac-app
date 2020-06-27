@@ -4,11 +4,10 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-   {
+const routes = [{
       path: '/',
       name: 'Home',
-      redirect:'/map',
+      redirect: '/map',
       component: Home
    },
    {
@@ -17,9 +16,9 @@ const routes = [
       component: () => import('../views/Map.vue')
    },
    {
-      path: '/about',
-      name: 'About',
-      component: () => import('../views/About.vue')
+      path: '/zodiac',
+      name: 'Zodiac',
+      component: () => import('../views/Zodiac.vue')
    }
 ]
 
