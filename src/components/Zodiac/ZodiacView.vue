@@ -2,9 +2,9 @@
   <section class="d-flex">
     <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
       <v-card-text class="text-center">
-        <p class="display-1 text--primary text-uppercase">{{cardData.header}}</p>
-        <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.divider}}</v-list-item-title>
-        <v-list-item-subtitle class="text-uppercase">{{cardData.tagline}}</v-list-item-subtitle>
+        <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
+        <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.element}}</v-list-item-title>
+        <v-list-item-subtitle class="text-uppercase">{{cardData.tag}}</v-list-item-subtitle>
         <v-list-item-subtitle class="text-uppercase">{{cardData.subline}}</v-list-item-subtitle>
       </v-card-text>
     </v-card>
@@ -65,19 +65,19 @@
                     <v-expansion-panel-content>
                       <v-text-field
                         label="Header Line"
-                        v-model="cardData.header"
+                        v-model="cardData.name"
                         placeholder="Placeholder"
                         outlined
                       ></v-text-field>
                       <v-text-field
                         label="Divider"
-                        v-model="cardData.divider"
+                        v-model="cardData.element"
                         placeholder="Placeholder"
                         outlined
                       ></v-text-field>
                       <v-text-field
                         label="Tagline"
-                        v-model="cardData.tagline"
+                        v-model="cardData.tag"
                         placeholder="Placeholder"
                         outlined
                       ></v-text-field>
@@ -110,25 +110,24 @@ export default {
   data() {
     return {
       cardData: {
-        header: "",
-        divider: "AIR",
-        tagline: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
-        subline: "JAN 20 - FEB 18"
+        name: "Aquário",
+        element: "Air",
+        tag: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
+        subline: "JAN 20 - FEB 18",
+        start: new Date("2017/01/21"),
+        end: new Date("2017/02/19")
       },
       zodiac: "",
-      dateKeeper: {
-        day: "",
-        month: ""
-      },
+
       date: new Date().toISOString().substr(0, 10),
       menu: false,
       model: "",
       height: 400,
       width: 300,
       items: [
-        { display_name: "30x40cm", value: [300, 400] },
-        { display_name: "50x70cm", value: [500, 700] },
-        { display_name: "70x100cm", value: [700, 1000] }
+        { display_name: "30x40cm", value: [354, 472] },
+        { display_name: "50x70cm", value: [590, 826] },
+        { display_name: "70x100cm", value: [826, 1181] }
       ]
     };
   },
@@ -143,7 +142,7 @@ export default {
       var month = dateInstance.getMonth() + 1; // -----get just the month from the whole date ----------
       let submittedDate = new Date(2017, month - 1, sdate); // -------create a new formatted instace of the date ----------
       this.zodiac = ZodiacService(submittedDate); // pass the formatted date as a param
-      this.cardData.header = this.zodiac.name;
+      this.cardData = this.zodiac;
     }
   },
   components: {
