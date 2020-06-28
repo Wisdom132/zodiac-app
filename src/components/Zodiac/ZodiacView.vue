@@ -32,6 +32,48 @@
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                   <v-expansion-panel>
+                    <v-expansion-panel-header>Customize sign</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <!-- <input
+                        v-model="dateKeeper.day"
+                        type="text"
+                        placeholder="Day"
+                        class="form-control"
+                      />
+                      <input
+                        v-model="dateKeeper.month"
+                        type="text"
+                        placeholder="Month"
+                        class="form-control"
+                      />
+                      <button @click="getDate">check</button>-->
+                      <v-menu
+                        ref="menu"
+                        v-model="menu"
+                        :close-on-content-click="false"
+                        :return-value.sync="date"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="290px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="date"
+                            label="Picker in menu"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker v-model="date" no-title scrollable>
+                          <v-spacer></v-spacer>
+                          <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                          <v-btn text color="primary" @click="getDate(date)">OK</v-btn>
+                        </v-date-picker>
+                      </v-menu>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                  <v-expansion-panel>
                     <v-expansion-panel-header>Customize Text</v-expansion-panel-header>
                     <v-expansion-panel-content>
                       <v-text-field
@@ -75,6 +117,7 @@
 </template>
 
 <script>
+import ZodiacService from "./finder.js";
 import sidebar from "./sidebar";
 export default {
   data() {
@@ -85,6 +128,13 @@ export default {
         tagline: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
         subline: "JAN 20 - FEB 18"
       },
+      zodiac: "",
+      dateKeeper: {
+        day: "",
+        month: ""
+      },
+      date: new Date().toISOString().substr(0, 10),
+      menu: false,
       model: "",
       height: 400,
       width: 300,
@@ -100,6 +150,14 @@ export default {
       this.height = this.model[1];
       this.width = this.model[0];
       console.log(this.model);
+    },
+    getDate(date) {
+      var dateInstance = new Date(date);
+      var sdate = dateInstance.getDate();
+      var month = dateInstance.getMonth() + 1;
+      let submittedDate = new Date(2017, month - 1, sdate);
+      this.zodiac = ZodiacService(submittedDate);
+      console.log(this.zodiac);
     }
   },
   components: {
