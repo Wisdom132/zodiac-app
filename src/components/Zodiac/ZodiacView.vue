@@ -21,7 +21,7 @@
                     <v-expansion-panel-header>Customize style</v-expansion-panel-header>
                     <v-expansion-panel-content>
                       <v-select
-                        @change="changeDimentions"
+                        @change="changeDimensions"
                         item-text="display_name"
                         item-value="value"
                         v-model="model"
@@ -34,19 +34,6 @@
                   <v-expansion-panel>
                     <v-expansion-panel-header>Customize sign</v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <!-- <input
-                        v-model="dateKeeper.day"
-                        type="text"
-                        placeholder="Day"
-                        class="form-control"
-                      />
-                      <input
-                        v-model="dateKeeper.month"
-                        type="text"
-                        placeholder="Month"
-                        class="form-control"
-                      />
-                      <button @click="getDate">check</button>-->
                       <v-menu
                         ref="menu"
                         v-model="menu"
@@ -68,7 +55,7 @@
                         <v-date-picker v-model="date" no-title scrollable>
                           <v-spacer></v-spacer>
                           <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-                          <v-btn text color="primary" @click="getDate(date)">OK</v-btn>
+                          <v-btn text color="primary" @click="getSign(date)">OK</v-btn>
                         </v-date-picker>
                       </v-menu>
                     </v-expansion-panel-content>
@@ -123,7 +110,7 @@ export default {
   data() {
     return {
       cardData: {
-        header: "AQUARIUS",
+        header: "",
         divider: "AIR",
         tagline: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
         subline: "JAN 20 - FEB 18"
@@ -146,18 +133,17 @@ export default {
     };
   },
   methods: {
-    changeDimentions(payload) {
+    changeDimensions(payload) {
       this.height = this.model[1];
       this.width = this.model[0];
-      console.log(this.model);
     },
-    getDate(date) {
-      var dateInstance = new Date(date);
-      var sdate = dateInstance.getDate();
-      var month = dateInstance.getMonth() + 1;
-      let submittedDate = new Date(2017, month - 1, sdate);
-      this.zodiac = ZodiacService(submittedDate);
-      console.log(this.zodiac);
+    getSign(date) {
+      var dateInstance = new Date(date); // ------- create a new instance of date and pass the submitted date as a param -----------
+      var sdate = dateInstance.getDate(); //------get just the date from the whole date -----
+      var month = dateInstance.getMonth() + 1; // -----get just the month from the whole date ----------
+      let submittedDate = new Date(2017, month - 1, sdate); // -------create a new formatted instace of the date ----------
+      this.zodiac = ZodiacService(submittedDate); // pass the formatted date as a param
+      this.cardData.header = this.zodiac.name;
     }
   },
   components: {
