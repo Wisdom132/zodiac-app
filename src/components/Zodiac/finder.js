@@ -15,3 +15,8 @@ export let getByDate = date => {
         }
     })
 }
+
+
+export let getByName = name => {
+    return Zodiacs.find(zodiac => zodiac.name == name)
+}

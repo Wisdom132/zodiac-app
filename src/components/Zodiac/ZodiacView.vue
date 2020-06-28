@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import { getByDate } from "./finder.js";
+import { getByDate, getByName } from "./finder.js";
 import signs from "./model";
 import sidebar from "./sidebar";
 export default {
@@ -163,7 +163,8 @@ export default {
       this.cardData = this.zodiac;
     },
     getbysign(name) {
-      console.log(name);
+      let data = getByName(name);
+      console.log(data);
     }
   },
   components: {
