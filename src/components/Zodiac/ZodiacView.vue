@@ -64,6 +64,16 @@
                           <v-btn text color="primary" @click="getSign(date)">OK</v-btn>
                         </v-date-picker>
                       </v-menu>
+
+                      <v-select
+                        :items="signs"
+                        item-text="name"
+                        @change="getbysign(sign)"
+                        v-model="sign"
+                        item-value="name"
+                        label="Zodiac"
+                        solo
+                      ></v-select>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                   <v-expansion-panel>
@@ -111,6 +121,7 @@
 
 <script>
 import ZodiacService from "./finder.js";
+import signs from "./model";
 import sidebar from "./sidebar";
 export default {
   data() {
@@ -124,7 +135,8 @@ export default {
         end: new Date("2017/02/19")
       },
       zodiac: "",
-
+      signs: "",
+      sign: "",
       date: new Date().toISOString().substr(0, 10),
       menu: false,
       model: "",
@@ -149,23 +161,28 @@ export default {
       let submittedDate = new Date(2017, month - 1, sdate); // -------create a new formatted instace of the date ----------
       this.zodiac = ZodiacService(submittedDate); // pass the formatted date as a param
       this.cardData = this.zodiac;
+    },
+    getbysign(name) {
+      console.log(name);
     }
   },
   components: {
     sidebar
+  },
+  mounted() {
+    this.signs = signs;
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .v-card {
-  transform-origin: 50% 50%;
-  transform: translate(-50%, -50%) scale(0.362405);
-  font-size: 1px;
-  //   position: absolute;
-  left: 50%;
-  top: 50%;
-  box-shadow: 2em 2em 45em rgba(35, 69, 152, 0.15);
+  //   transform-origin: 50% 50%;
+  //   transform: translate(-50%, -50%) scale(0.362405);
+  //   font-size: 1px;
+  //   left: 50%;
+  //   top: 50%;
+  //   box-shadow: 2em 2em 45em rgba(35, 69, 152, 0.15);
 }
 .tabs {
   width: 25rem;
