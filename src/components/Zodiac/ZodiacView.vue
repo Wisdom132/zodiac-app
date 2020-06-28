@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import ZodiacService from "./finder.js";
+import { getByDate } from "./finder.js";
 import signs from "./model";
 import sidebar from "./sidebar";
 export default {
@@ -159,7 +159,7 @@ export default {
       var sdate = dateInstance.getDate(); //------get just the date from the whole date -----
       var month = dateInstance.getMonth() + 1; // -----get just the month from the whole date ----------
       let submittedDate = new Date(2017, month - 1, sdate); // -------create a new formatted instace of the date ----------
-      this.zodiac = ZodiacService(submittedDate); // pass the formatted date as a param
+      this.zodiac = getByDate(submittedDate); // pass the formatted date as a param
       this.cardData = this.zodiac;
     },
     getbysign(name) {
