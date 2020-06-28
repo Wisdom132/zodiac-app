@@ -164,7 +164,7 @@ export default {
     },
     getbysign(name) {
       let data = getByName(name);
-      console.log(data);
+      this.cardData = data;
     }
   },
   components: {
