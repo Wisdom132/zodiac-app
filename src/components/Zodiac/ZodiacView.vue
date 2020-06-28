@@ -1,13 +1,19 @@
 <template>
   <section class="d-flex">
-    <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
-      <v-card-text class="text-center">
-        <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
-        <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.element}}</v-list-item-title>
-        <v-list-item-subtitle class="text-uppercase">{{cardData.tag}}</v-list-item-subtitle>
-        <v-list-item-subtitle class="text-uppercase">{{cardData.subline}}</v-list-item-subtitle>
-      </v-card-text>
-    </v-card>
+    <v-container style="background: #f0f4fb;">
+      <v-row>
+        <v-col>
+          <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
+            <v-card-text class="text-center">
+              <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
+              <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.element}}</v-list-item-title>
+              <v-list-item-subtitle class="text-uppercase">{{cardData.tag}}</v-list-item-subtitle>
+              <v-list-item-subtitle class="text-uppercase">{{cardData.subline}}</v-list-item-subtitle>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
 
     <div class="map-sidebar elevation-3 d-flex h-100">
       <div class="tabs brl br-grey-4 pt-10">
@@ -150,7 +156,17 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
+.v-card {
+  transform-origin: 50% 50%;
+  transform: translate(-50%, -50%) scale(0.362405);
+  font-size: 1px;
+  //   position: absolute;
+  left: 50%;
+  top: 50%;
+  box-shadow: 2em 2em 45em rgba(35, 69, 152, 0.15);
+}
 .tabs {
   width: 25rem;
   .overline {
