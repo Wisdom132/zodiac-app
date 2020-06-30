@@ -5,6 +5,7 @@
         <v-col>
           <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
             <v-card-text class="text-center">
+              <!-- <img :src="cardData.img" alt /> -->
               <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
               <v-list-item-title class="headline mb-1 text-uppercase">{{cardData.element}}</v-list-item-title>
               <v-list-item-subtitle class="text-uppercase">{{cardData.tag}}</v-list-item-subtitle>
@@ -127,6 +128,7 @@ export default {
   data() {
     return {
       cardData: {
+        // img: require("./images/aries_figure.svg"),
         name: "Aquário",
         element: "Air",
         tag: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
@@ -145,7 +147,7 @@ export default {
       items: [
         { display_name: "30x40cm", value: [354, 472] },
         { display_name: "50x70cm", value: [590, 826] },
-        { display_name: "70x100cm", value: [826, 1181] }
+        { display_name: "70x100cm", value: [826 / 2, 1181 / 2] }
       ]
     };
   },

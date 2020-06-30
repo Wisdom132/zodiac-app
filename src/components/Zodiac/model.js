@@ -2,25 +2,25 @@ export default [{
 
     name: "Aquário",
     element: "Air",
+
     tag: "PROGRESSIVE • IMAGINATIVE • INDEPENDENT",
     subline: "JAN 20 - FEB 18",
     start: new Date("2017/01/21"),
     end: new Date("2017/02/19"),
 }, {
     name: "Peixes",
-
+    // img: require("./images/pisces_figure.svg"),
     element: "WATER",
     tag: "COMPASSIONATE • INTUITIVE • ARTISTIC",
     subline: "FEB 19 - MAR 20",
-
     start: new Date("2017/02/20"),
     end: new Date("2017/03/20"),
 }, {
     name: "Aries",
     element: "FIRE",
+    // img: require("./images/aries_figure.svg"),
     tag: "ENTHUSIASTIC • DYNAMIC • HONEST",
     subline: "MAR 21 - APR 19",
-
     start: new Date("2017/03/21"),
     end: new Date("2017/04/20"),
 }, {
