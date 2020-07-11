@@ -3,7 +3,7 @@
     <v-container style="background: #f0f4fb;">
       <v-row>
         <v-col>
-          <v-card class="mx-auto w-100 bg-grey-2 mt-5" :height="height" :width="width">
+          <v-card class="mx-auto w-100 bg-grey-2 mt-5 pdf" :height="height" :width="width">
             <v-card-text class="text-center">
               <!-- <img :src="cardData.img" alt /> -->
               <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
@@ -109,6 +109,11 @@
                 </v-expansion-panels>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col>
+                <button @click="download">Download</button>
+              </v-col>
+            </v-row>
           </v-container>
         </div>
       </div>
@@ -121,6 +126,7 @@
 </template>
 
 <script>
+import jsPDF from "jspdf";
 import { getByDate, getByName } from "./finder.js";
 import signs from "./model";
 import sidebar from "./sidebar";
@@ -152,10 +158,18 @@ export default {
     };
   },
   methods: {
+    download() {
+     var doc = new jsPDF()
+
+doc.text('Hello world!', 10, 10)
+doc.save('a4.pdf')
+    },
     changeDimensions(payload) {
       this.height = this.model[1];
       this.width = this.model[0];
     },
+
+    downloadPDF() {},
     getSign(date) {
       var dateInstance = new Date(date); // ------- create a new instance of date and pass the submitted date as a param -----------
       var sdate = dateInstance.getDate(); //------get just the date from the whole date -----
