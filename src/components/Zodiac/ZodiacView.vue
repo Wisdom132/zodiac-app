@@ -160,7 +160,7 @@ export default {
   methods: {
     download() {
       var doc = new jsPDF();
-      doc.fromHTML($("#pdf").get(0), 10, 10, { width: 180 });
+      doc.fromHTML($("#pdf").get(0), 10, 10, { width: this.width + "px" });
       doc.save("a4.pdf");
     },
     changeDimensions(payload) {
