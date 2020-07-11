@@ -3,7 +3,7 @@
     <v-container style="background: #f0f4fb;">
       <v-row>
         <v-col>
-          <v-card class="mx-auto w-100 bg-grey-2 mt-5 pdf" :height="height" :width="width">
+          <v-card class="mx-auto w-100 bg-grey-2 mt-5" id="pdf" :height="height" :width="width">
             <v-card-text class="text-center">
               <!-- <img :src="cardData.img" alt /> -->
               <p class="display-1 text--primary text-uppercase">{{cardData.name}}</p>
@@ -159,10 +159,9 @@ export default {
   },
   methods: {
     download() {
-     var doc = new jsPDF()
-
-doc.text('Hello world!', 10, 10)
-doc.save('a4.pdf')
+      var doc = new jsPDF();
+      doc.fromHTML($("#pdf").get(0), 10, 10, { width: 180 });
+      doc.save("a4.pdf");
     },
     changeDimensions(payload) {
       this.height = this.model[1];
@@ -188,6 +187,11 @@ doc.save('a4.pdf')
   },
   mounted() {
     this.signs = signs;
+  },
+  created() {
+    global.jQuery = require("jquery");
+    var $ = global.jQuery;
+    window.$ = $;
   }
 };
 </script>
