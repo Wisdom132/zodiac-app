@@ -111,7 +111,7 @@
             </v-row>
             <v-row>
               <v-col>
-                <button @click="download">Download</button>
+                <v-btn @click="download" class="ma-2 w-50" outlined color="gray">Download</v-btn>
               </v-col>
             </v-row>
           </v-container>
